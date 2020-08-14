@@ -65,4 +65,16 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 		return null;
 	}
 
+	@Override
+	public int update(Member bean) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deletaByKey(String key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -9,6 +9,10 @@ public interface MemberDao<B, K> {
 	B selectByKey(K key);
 	//查詢ALL
 	List<B>selectAll();
+	//修改
+	int update(B bean);
+	//刪除
+	int deletaByKey(K key);
 	
 	
 }
