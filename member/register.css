@@ -1,0 +1,30 @@
+body {
+    background-image: url("timg.jpg");
+    background-size: 100%;
+    width: 1024px;
+    height: 700px;
+}
+
+#table-a {
+    width: 400px;
+    height: 420px;
+    border: #ffd6d5 solid;
+    background-color: #ffe3e3;
+    position: relative;
+    left: 500px;
+    top: 70px;
+}
+
+#box {
+    position: absolute;
+    left: 90px;
+    top: 100px;
+    /*border: yellow solid;*/
+    font-size: 20px;
+}
+
+#tit {
+    position: absolute;
+    left: 120px;
+    top: 20px;
+}
