@@ -3,14 +3,14 @@ package web.member.service;
 
 import web.member.bean.Member;
 import web.member.dao.MemberDao;
-import web.member.dao.impl.MemberDaolmpl;
+import web.member.dao.impl.MemberDaoimpl;
 
 
 public class MemberService {
 	private MemberDao<Member, String> dao ;
 
 	public MemberService() {
-		dao = new MemberDaolmpl();
+		dao = new MemberDaoimpl();
 	}
 	
 	//拿到Member物件，檢查account是否存在，存在return，不存在就insert
