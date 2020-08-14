@@ -42,12 +42,7 @@ public class RegisterController extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 			Member member = json2Member(req);
 			
-			member.setAccount(member.getAccount());
-			member.setPassword(member.getPassword());
-			member.setNickname(member.getNickname());
-			member.setLastUpdateDate(member.getLastUpdateDate());
-			member.setId(member.getId());
-			member.setPath(false);
+			
 			
 			
 		} catch (Exception e) {

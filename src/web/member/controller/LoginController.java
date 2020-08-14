@@ -21,7 +21,6 @@ package web.member.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,9 +42,9 @@ public class LoginController extends HttpServlet {
 		try {
 			req.setCharacterEncoding("UTF-8");
 			Member member = json2Member(req);
-			member.setAccount(member.getAccount());
-			member.setPassword(member.getPassword());
-			member.setPath(false);
+			member.setACCOUNT(member.getACCOUNT());
+			member.setPASSWORD(member.getPASSWORD());
+			member.setPASS(false);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

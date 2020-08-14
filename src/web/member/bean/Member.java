@@ -36,8 +36,8 @@ public class Member {
 	public Date getLastUpdateDate() {
 		return lastUpdateDate;
 	}
-	public void setLastUpdateDate(Timestamp lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
+	public void setLastUpdateDate(Timestamp date) {
+		this.lastUpdateDate = date;
 	}
 	
 }
