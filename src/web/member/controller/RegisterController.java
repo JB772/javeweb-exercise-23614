@@ -1,5 +1,6 @@
 package web.member.controller;
 
+<<<<<<< HEAD
 //import java.io.IOException;
 //import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
@@ -20,12 +21,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+=======
+import java.io.IOException;
+
+>>>>>>> b00f576501caa4a9a230cd180fff9b9918f5ad70
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -73,4 +79,17 @@ public class RegisterController extends HttpServlet {
 		return GSON.fromJson(json.toString(), Member.class);
 	}
 
+=======
+@WebServlet
+public class RegisterController extends HttpServlet{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	}
+>>>>>>> b00f576501caa4a9a230cd180fff9b9918f5ad70
 }
