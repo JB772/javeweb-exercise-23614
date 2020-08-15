@@ -25,14 +25,16 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 
 	@Override
 	public int insert(Member bean) {
-		String sql = "insert into Member(account, password, pass, lastUpdateDate) "
-				+ "values	(?,?,?,?)";
+		String sql = "insert into MEMBER(ACCOUNT, PASSWORD, NICKNAME, PASS, LASTUPDATEDATE, ROLE_ID) "
+				+ "values	(?,?,?,?,?)";
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			pstmt.setObject(1, bean.getACCOUNT());
-			pstmt.setObject(2, bean.getPASSWORD());
-			pstmt.setObject(3, bean.getPASS());
+			pstmt.setObject(1, bean.getAccount());
+			pstmt.setObject(2, bean.getPassword());
+			pstmt.setObject(3, bean.getNickname());
+			pstmt.setObject(3, bean.getPass());
 			pstmt.setObject(4, bean.getLastUpdateDate());
+			pstmt.setObject(5, bean.getRole_ID());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,9 +50,10 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 			Member memberByKey = new Member();
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				memberByKey.setACCOUNT(rs.getNString("ACCOUNT"));
-				memberByKey.setPASSWORD(rs.getNString("ACCOUNT"));
-				memberByKey.setPASS(rs.getBoolean("PASS"));
+				memberByKey.setAccount(rs.getNString("account"));
+				memberByKey.setPassword(rs.getNString("password"));
+				memberByKey.setLastUpdateDate(rs.getTimestamp("lastUpdateDate"));
+				memberByKey.setPass(rs.getBoolean("pass"));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -67,8 +70,28 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 
 	@Override
 	public int update(Member bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "update Member set"
+				+ "PASSWORD =?,"
+				+ "NICKNAME =?,"
+				+ "PASS =?,"
+				+ "LASTUPDATEDATE =?,"
+				+ "ROLE_ID =? "
+			+"where ACCOUNT = ? ";
+
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			
+			pstmt.setString(1, bean.getPassword());
+			pstmt.setString(2, bean.getNickname());
+			pstmt.setBoolean(3, bean.getPass());
+			pstmt.setTimestamp(4, bean.getLastUpdateDate());
+			pstmt.setInt(5, bean.getRole_ID());
+			pstmt.setString(6, bean.getAccount());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	@Override

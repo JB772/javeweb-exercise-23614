@@ -42,9 +42,9 @@ public class LoginController extends HttpServlet {
 		try {
 			req.setCharacterEncoding("UTF-8");
 			Member member = json2Member(req);
-			member.setACCOUNT(member.getACCOUNT());
-			member.setPASSWORD(member.getPASSWORD());
-			member.setPASS(false);
+			member.setAccount(member.getAccount());
+			member.setPassword(member.getPassword());
+			member.setPass(false);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,43 +1,66 @@
 package web.member.bean;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Member {
-	private String ACCOUNT;
-	private String PASSWORD;
-	private	String NICKNAME;
-	private Boolean PASS;
+	private String account;
+	private String password;
+	private	String nickname;
+	private Boolean pass;
 	private	Timestamp lastUpdateDate;
-	public String getACCOUNT() {
-		return ACCOUNT;
+	private Integer role_ID;
+	
+	public Member() {
+		super();
 	}
-	public void setACCOUNT(String aCCOUNT) {
-		ACCOUNT = aCCOUNT;
+
+	public String getAccount() {
+		return account;
 	}
-	public String getPASSWORD() {
-		return PASSWORD;
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+
+	public String getPassword() {
+		return password;
 	}
-	public String getNICKNAME() {
-		return NICKNAME;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public void setNICKNAME(String nICKNAME) {
-		NICKNAME = nICKNAME;
+
+	public String getNickname() {
+		return nickname;
 	}
-	public Boolean getPASS() {
-		return PASS;
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-	public void setPASS(Boolean pASS) {
-		PASS = pASS;
+
+	public Boolean getPass() {
+		return pass;
 	}
-	public Date getLastUpdateDate() {
+
+	public void setPass(Boolean pass) {
+		this.pass = pass;
+	}
+
+	public Timestamp getLastUpdateDate() {
 		return lastUpdateDate;
 	}
-	public void setLastUpdateDate(Timestamp date) {
-		this.lastUpdateDate = date;
+
+	public void setLastUpdateDate(Timestamp lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
 	}
+
+	public Integer getRole_ID() {
+		return role_ID;
+	}
+
+	public void setRole_ID(Integer role_ID) {
+		this.role_ID = role_ID;
+	}
+	
 	
 }

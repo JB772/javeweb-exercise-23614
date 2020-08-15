@@ -15,8 +15,8 @@ public class MemberService {
 	
 	//拿到Member物件，檢查account是否存在，存在return，不存在就insert
 	public String  Register(Member member) {
-		String registrAccount = member.getACCOUNT();
-		if (registrAccount == dao.selectByKey(registrAccount).getACCOUNT()) {
+		String registrAccount = member.getAccount();
+		if (registrAccount == dao.selectByKey(registrAccount).getAccount()) {
 			return "Account is exixt";
 		}
 		dao.insert(member);
@@ -37,7 +37,7 @@ public class MemberService {
 		if (memberL == null) {
 			return LoginNoAccount;
 		}
-		if (memberL.getPASSWORD() != password) {
+		if (memberL.getPassword() != password) {
 			return LoginErrorPassword;
 		}
 		return LoginSuccess;
