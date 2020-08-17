@@ -2,7 +2,7 @@
     <wb-module deploy-name="javeweb-exercise-23614">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="javeweb-exercise-23614"/>
         <property name="java-output-path" value="/javeweb-exercise-23614/build/classes"/>
+        <property name="context-root" value="javeweb-exercise-23614"/>
     </wb-module>
 </project-modules>

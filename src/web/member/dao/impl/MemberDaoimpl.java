@@ -96,7 +96,13 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 
 	@Override
 	public int deletaByKey(String key) {
-		// TODO Auto-generated method stub
+		String sql = "";
+		try (Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

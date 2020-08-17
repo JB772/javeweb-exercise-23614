@@ -20,6 +20,8 @@ package web.member.controller;
 //}
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,29 +33,35 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import web.member.bean.Member;
+import web.member.service.MemberService;
 
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Gson GSON = new GsonBuilder().create();
-       
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			req.setCharacterEncoding("UTF-8");
+			
 			Member member = json2Member(req);
 			member.setAccount(member.getAccount());
 			member.setPassword(member.getPassword());
-			member.setPass(false);
+			member.setPass(true);
+			member.setLastUpdateDate(new Timestamp(System.currentTimeMillis()));
 			
+			System.out.println(member.getAccount());
+			System.out.println(member.getPassword());
+			MemberService mService = new MemberService();
+			if(mService.Login(member.getAccount(), member.getPassword()) == 1) {
+				WriteJson(resp, member);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+				
 	}
+
 
 	private Member json2Member(HttpServletRequest req) {
 		StringBuilder json = new StringBuilder();
@@ -67,6 +75,15 @@ public class LoginController extends HttpServlet {
 			e.printStackTrace();
 		}
 		return GSON.fromJson(json.toString(), Member.class);
+	}
+	
+	private void WriteJson(HttpServletResponse resp, Member member) {
+		try(PrintWriter pw = resp.getWriter()) {
+			pw.print(GSON.toJson(member));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
