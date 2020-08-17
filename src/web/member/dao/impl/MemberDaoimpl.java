@@ -31,9 +31,9 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setObject(1, bean.getAccount());
 			pstmt.setObject(2, bean.getPassword());
-			pstmt.setObject(3, bean.getNickname());
+			pstmt.setObject(3, bean.getNickName());
 			pstmt.setObject(3, bean.getPass());
-			pstmt.setObject(4, bean.getLastUpdateDate());
+			pstmt.setObject(4, bean.getLast_update_date());
 			pstmt.setObject(5, bean.getRole_ID());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -43,17 +43,19 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 	}
 
 	@Override
-	public Member selectByKey(String key) {
+	public Member selectByKey(String account) {
 		String sql = "select * from MEMBER where ACCOUNT = ?";
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, account);
 			Member memberByKey = new Member();
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				memberByKey.setAccount(rs.getNString("account"));
-				memberByKey.setPassword(rs.getNString("password"));
-				memberByKey.setLastUpdateDate(rs.getTimestamp("lastUpdateDate"));
+				memberByKey.setPassword(rs.getString("password"));
+				memberByKey.setNickName(rs.getString("nickName"));
 				memberByKey.setPass(rs.getBoolean("pass"));
+				memberByKey.setLast_update_date(rs.getTimestamp("last_update_date"));
+				return memberByKey;
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -82,9 +84,9 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 			PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			
 			pstmt.setString(1, bean.getPassword());
-			pstmt.setString(2, bean.getNickname());
+			pstmt.setString(2, bean.getNickName());
 			pstmt.setBoolean(3, bean.getPass());
-			pstmt.setTimestamp(4, bean.getLastUpdateDate());
+			pstmt.setTimestamp(4, bean.getLast_update_date());
 			pstmt.setInt(5, bean.getRole_ID());
 			pstmt.setString(6, bean.getAccount());
 			return pstmt.executeUpdate();

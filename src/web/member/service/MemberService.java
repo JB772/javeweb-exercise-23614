@@ -30,18 +30,27 @@ public class MemberService {
 	//若回傳的Member物件!=null，再檢查password是否 ==。
 	public int Login(String account, String password) {
 		int LoginSuccess = 1;
-		int LoginNoAccount = 0;
-		int LoginErrorPassword = -1;
+		int LoginNoAccount = 2;
+		int LoginErrorPassword = 3;
+		System.out.println("account:"+account);
+		System.out.println("password:"+password);
 		
-		Member memberL = dao.selectByKey(account);
-		if (memberL == null) {
+		//Member memberL = dao.selectByKey(account);
+//		System.out.println("nickName:"+memberL.getNickName());
+		
+		if (dao.selectByKey(account) == null) {
+			System.out.println(LoginNoAccount);
 			return LoginNoAccount;
 		}else {
-			if (memberL.getPassword() != password) {
+			Member memberByKey = dao.selectByKey(account);
+			if(password.isEmpty() || memberByKey.getPassword() != password) {
+				System.out.println(LoginErrorPassword);
 				return LoginErrorPassword;
+			}else {
+				System.out.println(LoginSuccess);
+				return LoginSuccess;
 			}
 		}
-		return LoginSuccess;
 	}
 	
 }

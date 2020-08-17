@@ -45,15 +45,15 @@ public class LoginController extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 			
 			Member member = json2Member(req);
-			member.setAccount(member.getAccount());
-			member.setPassword(member.getPassword());
-			member.setPass(true);
-			member.setLastUpdateDate(new Timestamp(System.currentTimeMillis()));
+			String htmlAccount = member.getAccount();
+			String htmlPassword = member.getPassword();
+//			member.setPass(true);
+//			member.setLast_update_date(new Timestamp(System.currentTimeMillis()));
 			
-			System.out.println(member.getAccount());
-			System.out.println(member.getPassword());
+			System.out.println(htmlAccount);
+			System.out.println(htmlPassword);
 			MemberService mService = new MemberService();
-			if(mService.Login(member.getAccount(), member.getPassword()) == 1) {
+			if(mService.Login(htmlAccount, htmlPassword) == 1) {
 				WriteJson(resp, member);
 			}
 		} catch (Exception e) {

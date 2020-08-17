@@ -5,9 +5,9 @@ import java.sql.Timestamp;
 public class Member {
 	private String account;
 	private String password;
-	private	String nickname;
+	private	String nickName;
 	private Boolean pass;
-	private	Timestamp lastUpdateDate;
+	private	Timestamp last_update_date;
 	private Integer role_ID;
 	
 	public Member() {
@@ -30,12 +30,12 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public Boolean getPass() {
@@ -46,12 +46,12 @@ public class Member {
 		this.pass = pass;
 	}
 
-	public Timestamp getLastUpdateDate() {
-		return lastUpdateDate;
+	public Timestamp getLast_update_date() {
+		return last_update_date;
 	}
 
-	public void setLastUpdateDate(Timestamp lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
+	public void setLast_update_date(Timestamp lastUpdateDate) {
+		this.last_update_date = lastUpdateDate;
 	}
 
 	public Integer getRole_ID() {
