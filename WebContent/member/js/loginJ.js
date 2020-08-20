@@ -19,7 +19,7 @@ window.onload = function(){
 		.then(resp => resp.json())
 		.then(body => {
 			// 接收到Controller回應後，要做的事寫在這!!
-			alert(body.nickName);
+			alert(body.last_update_date);
 		}); 
 	});
 }	

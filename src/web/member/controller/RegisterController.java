@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import web.member.bean.Member;
+import web.member.service.MemberService;
 
 
 @WebServlet("/RegisterController")
@@ -41,7 +42,10 @@ public class RegisterController extends HttpServlet {
 		try {
 			req.setCharacterEncoding("UTF-8");
 			Member member = json2Member(req);
-			
+			int resultCode = new MemberService().register(member);
+			if(resultCode == 1) {
+				System.out.println("Register Success!");
+			}
 			
 			
 			

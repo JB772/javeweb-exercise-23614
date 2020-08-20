@@ -3,6 +3,7 @@ package web.member.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.InitialContext;
@@ -66,7 +67,25 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 
 	@Override
 	public List<Member> selectAll() {
-		// TODO Auto-generated method stub
+		String sql = "select * from MEMBER";
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();) {
+			List<Member> list= new ArrayList<Member>();
+			while(rs.next()) {
+				Member member = new Member();
+				member.setAccount(rs.getString("ACCOUNT"));
+				member.setPassword(rs.getString("PASSWORD"));
+				member.setNickName(rs.getString("NICKNAME"));
+				member.setPass(rs.getBoolean("PASS"));
+				member.setLast_update_date(rs.getTimestamp("LAST_UPDATE_DATE"));
+				member.setRole_ID(rs.getInt("ROLE_ID"));
+				list.add(member);
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -97,11 +116,11 @@ public class MemberDaoimpl implements MemberDao<Member, String>{
 	}
 
 	@Override
-	public int deletaByKey(String key) {
-		String sql = "";
+	public int deletaByKey(String account) {
+		String sql = "delete MEMBER where ACCOUNT = ?";
 		try (Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)){
-			
+			pstmt.setString(1, "account");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

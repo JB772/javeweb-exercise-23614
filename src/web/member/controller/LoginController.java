@@ -47,13 +47,15 @@ public class LoginController extends HttpServlet {
 			Member member = json2Member(req);
 			String htmlAccount = member.getAccount();
 			String htmlPassword = member.getPassword();
-//			member.setPass(true);
-//			member.setLast_update_date(new Timestamp(System.currentTimeMillis()));
 			
 			System.out.println(htmlAccount);
 			System.out.println(htmlPassword);
-			MemberService mService = new MemberService();
-			if(mService.Login(htmlAccount, htmlPassword) == 1) {
+			//System.out.println("result:"+mService.Login(htmlAccount, htmlPassword));
+//			MemberService memberS = new MemberService();
+
+			if(new MemberService().login(htmlAccount, htmlPassword) == 1) {
+				member.setLast_update_date(new Timestamp(System.currentTimeMillis()));
+				System.out.println(member.getLast_update_date());
 				WriteJson(resp, member);
 			}
 		} catch (Exception e) {
